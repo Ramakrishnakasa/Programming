@@ -43,37 +43,27 @@ class Solution
     {
         ArrayList<Integer> a = new ArrayList<>();
         a.add(-1);
-        // int left=0;
-        // int right=0;
-        // int sum=0;
-        // while()
-        
-        // Using HashMap
-        HashMap<Integer,Integer> hs = new HashMap<>();
-        
-        int prefixSum=0;
-        
-        for(int i=0;i<n;i++){
-            prefixSum+=arr[i];
-            if(prefixSum==s){
-                 a.remove(0);
-                a.add(1);
-                a.add(i+1);
-                return a;
+        int left=0;
+        int right=0;
+        int sum=0;
+        while(right<n){
+            sum+=arr[right];
+            while(sum>s && left<right){
+                sum-=arr[left];
+                left++;
             }
-            if(hs.containsKey(prefixSum-s)){
-                int j = hs.get(prefixSum-s);
-                a.remove(0);
-                a.add(j+2);
-                a.add(i+1);
-                return a;
-            }
+                if(sum==s){
+                    a.remove(0);
+                    a.add(left+1);
+                    a.add(right+1);
+                    return a;
+                    
+                }
             
-            
-            hs.put(prefixSum,i);
+            right++;
         }
-        return a;
         
+       return a; 
     }
 }
         // brute Force
@@ -91,3 +81,28 @@ class Solution
         // }
         // return a;
       
+        // // Using HashMap
+        // HashMap<Integer,Integer> hs = new HashMap<>();
+        
+        // int prefixSum=0;
+        
+        // for(int i=0;i<n;i++){
+        //     prefixSum+=arr[i];
+        //     if(prefixSum==s){
+        //          a.remove(0);
+        //         a.add(1);
+        //         a.add(i+1);
+        //         return a;
+        //     }
+        //     if(hs.containsKey(prefixSum-s)){
+        //         int j = hs.get(prefixSum-s);
+        //         a.remove(0);
+        //         a.add(j+2);
+        //         a.add(i+1);
+        //         return a;
+        //     }
+            
+            
+        //     hs.put(prefixSum,i);
+        // }
+        // return a;
