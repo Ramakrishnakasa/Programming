@@ -9,10 +9,7 @@ class Solution {
         
         for(int i=0;i<nums.length;i++){
             
-           
-           
-           
-            if(prefixSum == sum-nums[i]-prefixSum){
+   if(prefixSum == sum-nums[i]-prefixSum){
                 return i;
             }
              prefixSum+=nums[i];
